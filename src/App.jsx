@@ -3,7 +3,8 @@ import "./App.css";
 
 function Square({value, onSquareClick}) {
   return (
-    <button className="square" onClick={onSquareClick}>
+    // prop that needs to be passed, onSquareClick. For each button, will handle a function prop
+    <button className="square" onClick={onSquareClick}> 
       {value}
     </button>
   );
@@ -13,14 +14,15 @@ export default function Board() {
   const [squares, setSquares] = useState(Array(9).fill(null));
 
   function handleClick(i) {
-    const nextSquares = squares.slice();
-    nextSquares[i] = "X";
-    setSquares(nextSquares)
+    const nextSquares = squares.slice(); // shallow copy (change in original causes change here)
+    nextSquares[i] = "X"; // handles any given index
+    setSquares(nextSquares) // key logic here to update state 
   }
   return (
     <>
       <div className="board-row">
-        <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
+        {/* arrow functions - using closure logic - update Squares */}
+        <Square value={squares[0]} onSquareClick={() => handleClick(0)} /> 
         <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
         <Square value={squares[2]} onSquareClick={() => handleClick(2)} />
       </div>
@@ -37,3 +39,5 @@ export default function Board() {
     </>
   );
 }
+
+// 
