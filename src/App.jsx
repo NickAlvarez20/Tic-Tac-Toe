@@ -11,12 +11,18 @@ function Square({value, onSquareClick}) {
 }
 
 export default function Board() {
+  const [xIsNext, setXIsNext] = useState(true);
   const [squares, setSquares] = useState(Array(9).fill(null));
 
   function handleClick(i) {
     const nextSquares = squares.slice(); // shallow copy (change in original causes change here)
-    nextSquares[i] = "X"; // handles any given index
+    if (xIsNext) {
+      nextSquares[i] = "X"
+    } else {
+      nextSquares[i] = "O"
+    }
     setSquares(nextSquares) // key logic here to update state 
+    setXIsNext(!xIsNext); // flips the state of xIsNext to opposite it's current state/value
   }
   return (
     <>
