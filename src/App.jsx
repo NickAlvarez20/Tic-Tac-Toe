@@ -1,10 +1,10 @@
 import { useState } from "react";
 import "./App.css";
 
-function Square({value, onSquareClick}) {
+function Square({ value, onSquareClick }) {
   return (
     // prop that needs to be passed, onSquareClick. For each button, will handle a function prop
-    <button className="square" onClick={onSquareClick}> 
+    <button className="square" onClick={onSquareClick}>
       {value}
     </button>
   );
@@ -15,20 +15,23 @@ export default function Board() {
   const [squares, setSquares] = useState(Array(9).fill(null));
 
   function handleClick(i) {
+    if (squares[i]) {
+      return;
+    }
     const nextSquares = squares.slice(); // shallow copy (change in original causes change here)
     if (xIsNext) {
-      nextSquares[i] = "X"
+      nextSquares[i] = "X";
     } else {
-      nextSquares[i] = "O"
+      nextSquares[i] = "O";
     }
-    setSquares(nextSquares) // key logic here to update state 
+    setSquares(nextSquares); // key logic here to update state
     setXIsNext(!xIsNext); // flips the state of xIsNext to opposite it's current state/value
   }
   return (
     <>
       <div className="board-row">
         {/* arrow functions - using closure logic - update Squares */}
-        <Square value={squares[0]} onSquareClick={() => handleClick(0)} /> 
+        <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
         <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
         <Square value={squares[2]} onSquareClick={() => handleClick(2)} />
       </div>
@@ -46,4 +49,4 @@ export default function Board() {
   );
 }
 
-// 
+//
