@@ -22,7 +22,7 @@ Tic-Tac-Toe (React Edition)
 ## About
 This is a clean, beginner-friendly implementation of the classic **Tic-Tac-Toe** game built with **React** and **Vite**.  
 
-It follows the official React tutorial structure (or a very similar pattern), demonstrating core React concepts through a fun, interactive project:  
+It follows the official React tutorial structure (https://react.dev/learn/tutorial-tic-tac-toe), demonstrating core React concepts through a fun, interactive project:  
 - Functional components  
 - useState for managing game state  
 - Passing props between components  
